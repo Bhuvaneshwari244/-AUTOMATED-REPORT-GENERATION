@@ -1,0 +1,26 @@
+import pandas as pd
+
+# Sample data
+data = {
+   Name, Age, Salary, Department
+Alice, 25, 50000, "HR, Management"  ✅ Correct (comma inside quotes)
+Bob, 30, 60000, IT  ✅ Correct
+}
+def analyze_data(file_path):
+    """Reads CSV data and returns a statistical summary."""
+    try:
+        df = pd.read_csv(file_path, on_bad_lines="skip")  # Ignores bad lines
+        summary = df.describe()
+        return summary
+    except Exception as e:
+        print(f"❌ Error reading the file: {e}")
+        return None
+
+# Create DataFrame
+df = pd.read_csv(file_path, delimiter=";")
+
+# Save as CSV
+file_path = "/mnt/data/data.csv"
+df.to_csv(file_path, index=False)
+
+file_path
